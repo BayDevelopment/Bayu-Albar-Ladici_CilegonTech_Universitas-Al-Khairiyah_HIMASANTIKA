@@ -30,9 +30,9 @@ const navColumns = [
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
       <div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
         <div class="lg:col-span-2">
-          <a href="#beranda" class="flex items-center gap-2.5">
+          <a href="#beranda" class="flex items-center gap-3">
             <span
-              class="relative flex h-9 w-9 items-center justify-center rounded-lg p-1 overflow-hidden"
+              class="relative flex h-11 w-11 items-center justify-center rounded-lg p-1 overflow-hidden shrink-0"
             >
               <!-- Logo gambar menggantikan teks TI -->
               <img
@@ -41,12 +41,17 @@ const navColumns = [
                 class="h-full w-full object-contain"
               />
               <span
-                class="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-brand-yellow ring-2 ring-ink"
+                class="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-brand-yellow ring-2 ring-ink"
               />
             </span>
-            <span class="text-sm font-semibold text-white">
-              Teknik Informatika
-            </span>
+            <div class="flex flex-col">
+              <span class="text-sm font-semibold text-white leading-tight">
+                Universitas Muhammadiyah Cirebon
+              </span>
+              <span class="text-xs font-normal text-gray-300 leading-tight">
+                Teknik Informatika
+              </span>
+            </div>
           </a>
           <p class="mt-4 max-w-sm text-sm leading-relaxed text-white/50">
             Program Studi S1 Teknik Informatika menyiapkan lulusan yang siap

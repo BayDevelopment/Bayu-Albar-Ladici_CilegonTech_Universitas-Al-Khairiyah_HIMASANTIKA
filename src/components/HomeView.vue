@@ -8,6 +8,7 @@ import TrackCard from "@/components/ui/TrackCard.vue";
 import TestimonialCard from "@/components/ui/TestimonialCard.vue";
 import GalleryCarousel from "@/components/ui/GalleryCarousel.vue";
 import ActivityCard from "@/components/ui/ActivityCard.vue";
+import { UserPlus, LogIn } from "lucide-vue-next";
 import type {
   StatItem,
   FeatureItem,
@@ -298,17 +299,30 @@ const testimonials: Testimonial[] = [
             @click.prevent="openModal('register')"
             class="group relative inline-block text-left transition-transform active:scale-95 w-full sm:w-auto"
           >
-            <BaseButton variant="primary" class="w-full"
-              >Daftar Sekarang</BaseButton
+            <BaseButton
+              variant="primary"
+              class="w-full flex items-center justify-center gap-2"
             >
+              <UserPlus
+                class="h-4 w-4 transition-transform group-hover:scale-110"
+              />
+              <span>Daftar Sekarang</span>
+            </BaseButton>
           </button>
+
           <button
             @click.prevent="openModal('login')"
             class="group relative inline-block text-left transition-transform active:scale-95 w-full sm:w-auto"
           >
-            <BaseButton variant="secondary" class="w-full"
-              >Masuk Portal</BaseButton
+            <BaseButton
+              variant="secondary"
+              class="w-full flex items-center justify-center gap-2"
             >
+              <LogIn
+                class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              />
+              <span>Masuk Portal</span>
+            </BaseButton>
           </button>
         </div>
       </div>
@@ -671,21 +685,31 @@ const testimonials: Testimonial[] = [
       >
         <button
           @click.prevent="openModal('register')"
-          class="transition-transform active:scale-95 w-full sm:w-auto"
+          class="group transition-transform active:scale-95 w-full sm:w-auto"
         >
-          <BaseButton variant="primary" class="w-full"
-            >Daftar Sekarang</BaseButton
+          <BaseButton
+            variant="primary"
+            class="w-full flex items-center justify-center gap-2"
           >
+            <UserPlus
+              class="h-4 w-4 transition-transform group-hover:scale-110"
+            />
+            <span>Daftar Sekarang</span>
+          </BaseButton>
         </button>
         <button
           @click.prevent="openModal('login')"
-          class="transition-transform active:scale-95 w-full sm:w-auto"
+          class="group transition-transform active:scale-95 w-full sm:w-auto"
         >
           <BaseButton
             variant="secondary"
-            class="w-full !border-white/30 !text-white hover:!border-brand-yellow hover:!text-brand-yellow"
-            >Masuk Portal</BaseButton
+            class="w-full justify-center flex items-center gap-2 !border-white/30 !text-white hover:!border-brand-yellow hover:!text-brand-yellow"
           >
+            <LogIn
+              class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+            />
+            <span>Masuk Portal</span>
+          </BaseButton>
         </button>
       </div>
     </div>

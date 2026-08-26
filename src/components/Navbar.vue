@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import SectionEyebrow from "@/components/ui/SectionEyebrow.vue";
 import type { NavLink } from "@/types/content";
+import { LogIn, UserPlus } from "lucide-vue-next";
 
 const links: NavLink[] = [
   { label: "Beranda", href: "#beranda" },
@@ -60,17 +61,23 @@ const closeModal = () => {
       isScrolled ? 'bg-white/90 shadow-sm backdrop-blur-md' : 'bg-white/0'
     "
   >
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-      <a href="#beranda" class="flex items-center gap-2.5">
+    <nav
+      class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
+    >
+      <a href="#beranda" class="flex items-center gap-2">
         <img
           src="/gallery/UMC-1.png"
           alt="Logo UMC"
-          class="h-9 w-9 object-contain rounded-lg"
+          class="h-8 w-8 object-contain shrink-0"
         />
-        <span class="text-sm font-semibold leading-tight text-ink">
-          Teknik<br class="hidden sm:block" />
-          Informatika
-        </span>
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-ink leading-tight">
+            Universitas Muhammadiyah Cirebon
+          </span>
+          <span class="text-[10px] font-normal text-ink/70 leading-tight">
+            Teknik Informatika
+          </span>
+        </div>
       </a>
 
       <!-- Desktop Nav Links -->
@@ -87,14 +94,26 @@ const closeModal = () => {
 
       <!-- Desktop Auth Buttons -->
       <div class="hidden items-center gap-3 lg:flex">
-        <button @click.prevent="openModal('login')" class="transition-transform active:scale-95">
-          <BaseButton variant="ghost" class="!px-3 !py-2 text-brand-green">
-            Masuk Portal
+        <button
+          @click.prevent="openModal('login')"
+          class="transition-transform active:scale-95"
+        >
+          <BaseButton
+            variant="ghost"
+            class="!px-3 !py-2 text-brand-green flex items-center gap-2"
+          >
+            <LogIn class="h-4 w-4" />
+            <span>Masuk Portal</span>
           </BaseButton>
         </button>
-        <button @click.prevent="openModal('register')" class="transition-transform active:scale-95">
-          <BaseButton variant="primary">
-            Daftar Sekarang
+
+        <button
+          @click.prevent="openModal('register')"
+          class="transition-transform active:scale-95"
+        >
+          <BaseButton variant="primary" class="flex items-center gap-2">
+            <UserPlus class="h-4 w-4" />
+            <span>Daftar Sekarang</span>
           </BaseButton>
         </button>
       </div>
@@ -120,7 +139,10 @@ const closeModal = () => {
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-2"
     >
-      <div v-if="isOpen" class="border-t border-black/5 bg-white px-6 pb-6 pt-4 lg:hidden">
+      <div
+        v-if="isOpen"
+        class="border-t border-black/5 bg-white px-6 pb-6 pt-4 lg:hidden"
+      >
         <ul class="flex flex-col gap-1">
           <li v-for="link in links" :key="link.href">
             <a
@@ -134,13 +156,25 @@ const closeModal = () => {
         </ul>
         <div class="mt-4 flex flex-col gap-3">
           <button @click.prevent="openModal('login')" class="w-full text-left">
-            <BaseButton variant="secondary" class="w-full justify-center">
-              Masuk Portal
+            <BaseButton
+              variant="secondary"
+              class="w-full justify-center flex items-center gap-2"
+            >
+              <LogIn class="h-4 w-4" />
+              <span>Masuk Portal</span>
             </BaseButton>
           </button>
-          <button @click.prevent="openModal('register')" class="w-full text-left">
-            <BaseButton variant="primary" class="w-full justify-center">
-              Daftar Sekarang
+
+          <button
+            @click.prevent="openModal('register')"
+            class="w-full text-left"
+          >
+            <BaseButton
+              variant="primary"
+              class="w-full justify-center flex items-center gap-2"
+            >
+              <UserPlus class="h-4 w-4" />
+              <span>Daftar Sekarang</span>
             </BaseButton>
           </button>
         </div>
@@ -158,57 +192,96 @@ const closeModal = () => {
       leave-from-class="opacity-100 translate-y-0 scale-100"
       leave-to-class="opacity-0 translate-y-4 scale-95"
     >
-      <div v-if="isModalOpen" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
-        
+      <div
+        v-if="isModalOpen"
+        class="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6"
+      >
         <!-- Backdrop Overlay -->
-        <div 
-          class="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity cursor-pointer" 
-          @click="closeModal" 
+        <div
+          class="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity cursor-pointer"
+          @click="closeModal"
         />
 
         <!-- Modal Container -->
-        <div class="relative w-full max-w-md overflow-hidden rounded-2xl border border-white/10 bg-[#0A101C] p-6 sm:p-8 text-white shadow-[0_0_50px_rgba(0,0,0,0.6)] z-10">
-          
+        <div
+          class="relative w-full max-w-md overflow-hidden rounded-2xl border border-white/10 bg-[#0A101C] p-6 sm:p-8 text-white shadow-[0_0_50px_rgba(0,0,0,0.6)] z-10"
+        >
           <!-- Ambient Orbs -->
-          <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-red/10 blur-3xl" />
-          <div class="pointer-events-none absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-brand-yellow/10 blur-3xl" />
+          <div
+            class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-red/10 blur-3xl"
+          />
+          <div
+            class="pointer-events-none absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-brand-yellow/10 blur-3xl"
+          />
 
           <!-- Close Button -->
-          <button 
-            @click="closeModal" 
-            type="button" 
+          <button
+            @click="closeModal"
+            type="button"
             class="absolute right-5 top-5 rounded-lg p-2 text-white/50 hover:bg-white/10 hover:text-white transition-all z-20"
           >
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
 
           <!-- Header -->
           <div class="mb-6">
-            <SectionEyebrow :text="modalMode === 'register' ? 'auth.register()' : 'auth.login()'" />
+            <SectionEyebrow
+              :text="
+                modalMode === 'register' ? 'auth.register()' : 'auth.login()'
+              "
+            />
             <h3 class="mt-2 text-2xl font-bold text-white tracking-tight">
-              {{ modalMode === 'register' ? 'Pendaftaran Maba' : 'Portal Akademik' }}
+              {{
+                modalMode === "register"
+                  ? "Pendaftaran Maba"
+                  : "Portal Akademik"
+              }}
             </h3>
             <p class="mt-1 text-sm text-white/60">
-              {{ modalMode === 'register' ? 'Isi formulir untuk memulai karir digitalmu.' : 'Masuk menggunakan email yang terdaftar.' }}
+              {{
+                modalMode === "register"
+                  ? "Isi formulir untuk memulai karir digitalmu."
+                  : "Masuk menggunakan email yang terdaftar."
+              }}
             </p>
           </div>
 
           <!-- Tab Switcher -->
-          <div class="mb-6 flex rounded-xl bg-white/5 p-1 border border-white/10">
-            <button 
-              type="button" 
-              @click="modalMode = 'register'" 
-              :class="modalMode === 'register' ? 'bg-brand-red text-white shadow-md' : 'text-white/50 hover:text-white hover:bg-white/5'" 
+          <div
+            class="mb-6 flex rounded-xl bg-white/5 p-1 border border-white/10"
+          >
+            <button
+              type="button"
+              @click="modalMode = 'register'"
+              :class="
+                modalMode === 'register'
+                  ? 'bg-brand-red text-white shadow-md'
+                  : 'text-white/50 hover:text-white hover:bg-white/5'
+              "
               class="flex-1 rounded-lg py-2.5 text-xs font-semibold transition-all duration-200"
             >
               Daftar Baru
             </button>
-            <button 
-              type="button" 
-              @click="modalMode = 'login'" 
-              :class="modalMode === 'login' ? 'bg-brand-red text-white shadow-md' : 'text-white/50 hover:text-white hover:bg-white/5'" 
+            <button
+              type="button"
+              @click="modalMode = 'login'"
+              :class="
+                modalMode === 'login'
+                  ? 'bg-brand-red text-white shadow-md'
+                  : 'text-white/50 hover:text-white hover:bg-white/5'
+              "
               class="flex-1 rounded-lg py-2.5 text-xs font-semibold transition-all duration-200"
             >
               Masuk Portal
@@ -216,55 +289,115 @@ const closeModal = () => {
           </div>
 
           <!-- Form Register -->
-          <form v-if="modalMode === 'register'" @submit.prevent class="space-y-4 animate-fade-up animate-duration-300">
+          <form
+            v-if="modalMode === 'register'"
+            @submit.prevent
+            class="space-y-4 animate-fade-up animate-duration-300"
+          >
             <div>
-              <label class="block text-xs font-mono text-white/70 mb-1.5">> Nama Lengkap</label>
-              <input type="text" placeholder="Masukkan nama sesuai ijazah" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow" />
+              <label class="block text-xs font-mono text-white/70 mb-1.5"
+                >> Nama Lengkap</label
+              >
+              <input
+                type="text"
+                placeholder="Masukkan nama sesuai ijazah"
+                class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow"
+              />
             </div>
             <div>
-              <label class="block text-xs font-mono text-white/70 mb-1.5">> Email Aktif</label>
-              <input type="email" placeholder="nama@email.com" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow" />
+              <label class="block text-xs font-mono text-white/70 mb-1.5"
+                >> Email Aktif</label
+              >
+              <input
+                type="email"
+                placeholder="nama@email.com"
+                class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow"
+              />
             </div>
             <div>
-              <label class="block text-xs font-mono text-white/70 mb-1.5">> Kata Sandi</label>
-              <input type="password" placeholder="Buat kata sandi yang kuat" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow" />
+              <label class="block text-xs font-mono text-white/70 mb-1.5"
+                >> Kata Sandi</label
+              >
+              <input
+                type="password"
+                placeholder="Buat kata sandi yang kuat"
+                class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow"
+              />
             </div>
             <div>
-              <label class="block text-xs font-mono text-white/70 mb-1.5">> Pilihan Peminatan</label>
-              <select class="w-full rounded-xl border border-white/10 bg-[#0A101C] px-4 py-3 text-sm text-white transition-all focus:border-brand-yellow focus:outline-none focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer">
-                <option value="" disabled selected class="text-white/30">-- Pilih Jalur Spesialisasi --</option>
-                <option v-for="track in tracks" :key="track.code" :value="track.code">{{ track.title }}</option>
+              <label class="block text-xs font-mono text-white/70 mb-1.5"
+                >> Pilihan Peminatan</label
+              >
+              <select
+                class="w-full rounded-xl border border-white/10 bg-[#0A101C] px-4 py-3 text-sm text-white transition-all focus:border-brand-yellow focus:outline-none focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer"
+              >
+                <option value="" disabled selected class="text-white/30">
+                  -- Pilih Jalur Spesialisasi --
+                </option>
+                <option
+                  v-for="track in tracks"
+                  :key="track.code"
+                  :value="track.code"
+                >
+                  {{ track.title }}
+                </option>
               </select>
             </div>
             <div class="pt-3">
-              <BaseButton variant="primary" class="w-full justify-center !py-3 font-semibold shadow-lg shadow-brand-yellow/20 hover:shadow-brand-yellow/40">
+              <BaseButton
+                variant="primary"
+                class="w-full justify-center !py-3 font-semibold shadow-lg shadow-brand-yellow/20 hover:shadow-brand-yellow/40"
+              >
                 Kirim Pendaftaran
               </BaseButton>
             </div>
           </form>
 
           <!-- Form Login -->
-          <form v-if="modalMode === 'login'" @submit.prevent class="space-y-4 animate-fade-up animate-duration-300">
+          <form
+            v-if="modalMode === 'login'"
+            @submit.prevent
+            class="space-y-4 animate-fade-up animate-duration-300"
+          >
             <div>
-              <label class="block text-xs font-mono text-white/70 mb-1.5">> Email Pengguna</label>
-              <input type="email" placeholder="nama@email.com" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow" required />
+              <label class="block text-xs font-mono text-white/70 mb-1.5"
+                >> Email Pengguna</label
+              >
+              <input
+                type="email"
+                placeholder="nama@email.com"
+                class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow"
+                required
+              />
             </div>
             <div>
-              <label class="block text-xs font-mono text-white/70 mb-1.5">> Kata Sandi</label>
-              <input type="password" placeholder="••••••••" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow" required />
+              <label class="block text-xs font-mono text-white/70 mb-1.5"
+                >> Kata Sandi</label
+              >
+              <input
+                type="password"
+                placeholder="••••••••"
+                class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 transition-all focus:border-brand-yellow focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow"
+                required
+              />
             </div>
             <div class="flex items-center justify-end pt-1">
-              <a href="#" class="text-xs font-medium text-brand-yellow/80 hover:text-brand-yellow hover:underline transition-colors">
+              <a
+                href="#"
+                class="text-xs font-medium text-brand-yellow/80 hover:text-brand-yellow hover:underline transition-colors"
+              >
                 Lupa Kata Sandi?
               </a>
             </div>
             <div class="pt-3">
-              <BaseButton variant="primary" class="w-full justify-center !py-3 font-semibold shadow-lg shadow-brand-yellow/20 hover:shadow-brand-yellow/40">
+              <BaseButton
+                variant="primary"
+                class="w-full justify-center !py-3 font-semibold shadow-lg shadow-brand-yellow/20 hover:shadow-brand-yellow/40"
+              >
                 Akses Dashboard
               </BaseButton>
             </div>
           </form>
-          
         </div>
       </div>
     </Transition>
